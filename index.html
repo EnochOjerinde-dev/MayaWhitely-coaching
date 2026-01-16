@@ -18,12 +18,16 @@
         :root {
             /* Color Palette */
             --bg-warm: #F9F7F2;      
+            --bg-deep: #E8E4D9;      
             --sage-accent: #8E9775;  
             --sage-hover: #7A8463;
             --text-main: #4A4A4A;    
+            --text-dark: #2C2C2C;
             --text-light: #717171;
             --white: #FFFFFF;
+            --cream-light: #F1F1EB;
             --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --card-shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.1);
             
             /* Typography */
             --font-serif: 'Playfair Display', serif;
@@ -57,13 +61,14 @@
             font-family: var(--font-serif);
             font-weight: 500;
             line-height: 1.25;
-            color: #2C2C2C;
+            color: var(--text-dark);
+            transition: color 0.4s var(--ease);
         }
 
         a {
             text-decoration: none;
             color: inherit;
-            transition: color 0.3s var(--ease);
+            transition: all 0.3s var(--ease);
         }
 
         ul {
@@ -78,7 +83,7 @@
         }
 
         section {
-            padding: 120px 0; /* Consistent breathing room */
+            padding: 120px 0;
             position: relative;
             clear: both;
         }
@@ -107,12 +112,13 @@
             border: none;
             cursor: pointer;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(142, 151, 117, 0.15);
         }
 
         .btn:hover {
             background-color: var(--sage-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(142, 151, 117, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(142, 151, 117, 0.25);
         }
 
         /* Header & Nav */
@@ -142,7 +148,7 @@
             font-family: var(--font-serif);
             font-size: 1.5rem;
             font-weight: 500;
-            color: #2C2C2C;
+            color: var(--text-dark);
         }
 
         .nav-links {
@@ -156,34 +162,41 @@
             letter-spacing: 0.12em;
             font-weight: 500;
             color: var(--text-light);
+            position: relative;
+            padding-bottom: 4px;
         }
 
-        .nav-links a:hover {
-            color: var(--sage-accent);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: var(--sage-accent);
+            transition: width 0.3s var(--ease);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         #hero {
-            min-height: 100vh; /* Changed from height to min-height to prevent collapse */
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top: 140px; /* Space for fixed header */
+            padding-top: 140px; 
             padding-bottom: 80px;
             background: linear-gradient(rgba(249, 247, 242, 0.75), rgba(249, 247, 242, 0.75)), 
                         url('MayaWhitelyCoaching-bg.jpg') center/cover no-repeat;
             text-align: center;
         }
 
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
         .hero-content h1 {
             font-size: clamp(2.2rem, 5vw, 4.2rem);
             margin-bottom: 1.5rem;
-            line-height: 1.15;
         }
 
         .hero-content p {
@@ -195,20 +208,16 @@
             margin-right: auto;
         }
 
-        .supporting-line {
-            display: block;
-            margin-top: 1.5rem;
-            font-style: italic;
-            font-family: var(--font-serif);
-            color: var(--text-light);
-            font-size: 1.1rem;
+        /* Alternating Backgrounds */
+        .bg-alternate {
+            background-color: var(--bg-deep);
         }
 
-        /* About Section - Meet Maya */
-        #about {
+        .bg-white {
             background-color: var(--white);
         }
 
+        /* About Section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -216,21 +225,25 @@
             align-items: center;
         }
 
+        .coach-img-wrapper {
+            position: relative;
+            transition: transform 0.5s var(--ease);
+        }
+
+        .coach-img-wrapper:hover {
+            transform: scale(1.02);
+        }
+
         .coach-img-wrapper img {
             width: 100%;
             height: auto;
             border-radius: 4px;
-            box-shadow: 20px 20px 0px var(--bg-warm);
+            box-shadow: 20px 20px 0px var(--bg-deep);
+            transition: box-shadow 0.5s var(--ease);
         }
 
-        .about-text h2 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1.25rem;
-            font-size: 1.1rem;
+        .coach-img-wrapper:hover img {
+            box-shadow: 15px 15px 0px var(--sage-accent);
         }
 
         .punchline {
@@ -242,17 +255,7 @@
             line-height: 1.4;
         }
 
-        /* List Sections */
-        .list-section {
-            background-color: var(--bg-warm);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-        }
-
+        /* List Items */
         .check-list {
             max-width: 750px;
             margin: 0 auto;
@@ -260,10 +263,16 @@
 
         .check-list li {
             padding: 1.2rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
             display: flex;
             align-items: flex-start;
             font-size: 1.15rem;
+            transition: transform 0.3s var(--ease);
+        }
+
+        .check-list li:hover {
+            transform: translateX(10px);
+            color: var(--sage-accent);
         }
 
         .check-list li::before {
@@ -273,7 +282,7 @@
             font-weight: bold;
         }
 
-        /* Cards Grid */
+        /* Cards Grid with Invert Effect */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -285,65 +294,62 @@
             padding: 3.5rem;
             border-radius: 16px;
             box-shadow: var(--card-shadow);
+            transition: all 0.5s var(--ease);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            border: 1px solid transparent;
         }
 
-        .card h3 {
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
+        .card p {
+            transition: color 0.4s var(--ease);
+        }
+
+        .card .accent-text {
+            margin-top: 2rem;
+            font-style: italic;
+            color: var(--sage-accent);
+            transition: color 0.4s var(--ease);
+        }
+
+        /* The Invert State */
+        .card:hover {
+            background-color: var(--sage-accent);
+            transform: translateY(-12px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .card:hover h3 {
+            color: var(--white);
+        }
+
+        .card:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .card:hover .accent-text {
+            color: var(--cream-light);
         }
 
         /* Testimonials */
-        #testimonials {
-            background-color: #F0F2ED;
-        }
-
-        .testimonial-grid {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
         .testimonial-card {
             background: var(--white);
             padding: 3rem;
             border-radius: 12px;
             margin-bottom: 2rem;
             box-shadow: var(--card-shadow);
+            transition: transform 0.3s var(--ease);
         }
 
-        .testimonial-card blockquote {
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: 500;
-            color: var(--sage-accent);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.9rem;
+        .testimonial-card:hover {
+            transform: scale(1.01);
         }
 
         /* Booking Section */
         .cta-box {
             text-align: center;
             padding: 80px 40px;
-            background: var(--white);
+            background: var(--bg-deep); 
             border-radius: 24px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .microcopy {
-            display: block;
-            margin-top: 1.2rem;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            letter-spacing: 0.05em;
         }
 
         /* Footer */
@@ -352,26 +358,6 @@
             color: #E0E0E0;
             padding: 80px 0 40px;
             text-align: center;
-        }
-
-        .footer-logo {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            display: block;
-            color: var(--white);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin: 2.5rem 0;
-        }
-
-        .social-icons a:hover {
-            color: var(--sage-accent);
-            transform: translateY(-3px);
         }
 
         /* Responsive Fixes */
@@ -391,21 +377,21 @@
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 80px 0;
+            section { padding: 80px 0; }
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .card { padding: 2.5rem 2rem; }
+            .punchline { font-size: 1.3rem; }
+        }
+
+        @media (hover: none) {
+            .card:hover, .btn:hover, .coach-img-wrapper:hover, .check-list li:hover {
+                transform: none;
+                background-color: var(--white);
             }
-            .nav-links {
-                display: none;
-            }
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-            .about-text h2, .section-title {
-                font-size: 2.2rem;
-            }
-            .card {
-                padding: 2rem;
-            }
+            .card:hover h3 { color: var(--text-dark); }
+            .card:hover p { color: var(--text-main); }
+            .card:hover .accent-text { color: var(--sage-accent); }
         }
     </style>
 </head>
@@ -433,13 +419,12 @@
                     <h1>Quiet the Self-Doubt. Trust Your Voice. Move Through Life with Calm Confidence.</h1>
                     <p>Confidence coaching for sensitive, ambitious women who are tired of overthinking and ready to feel clear, grounded, and aligned with who they truly are.</p>
                     <a href="#contact" class="btn">Book a Free Clarity Call</a>
-                    <span class="supporting-line">For women who feel deeply — and want to lead their lives with confidence, not noise.</span>
                 </div>
             </div>
         </section>
 
         <!-- ABOUT SECTION -->
-        <section id="about">
+        <section id="about" class="bg-white">
             <div class="container">
                 <div class="about-grid">
                     <div class="coach-img-wrapper reveal">
@@ -457,9 +442,9 @@
         </section>
 
         <!-- WHO THIS IS FOR -->
-        <section class="list-section">
+        <section class="bg-alternate">
             <div class="container">
-                <h2 class="section-title reveal">This Coaching Is for You If…</h2>
+                <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">This Coaching Is for You If…</h2>
                 <ul class="check-list reveal">
                     <li>You’re ambitious but constantly second-guess yourself</li>
                     <li>You overthink conversations, decisions, and next steps</li>
@@ -473,33 +458,29 @@
             </div>
         </section>
 
-        <!-- HOW WE WORK TOGETHER -->
-        <section id="approach" style="background-color: var(--white);">
+        <!-- HOW WE WORK TOGETHER (INVERT EFFECT HERE) -->
+        <section id="approach" class="bg-white">
             <div class="container">
-                <h2 class="section-title reveal">How We Work Together</h2>
+                <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">How We Work Together</h2>
                 <div class="grid-cards">
                     <div class="card reveal">
-                        <div>
-                            <h3>1:1 Confidence Coaching</h3>
-                            <p>Personalised coaching sessions designed to help you quiet self-doubt, build emotional self-trust, and make decisions with clarity. Feel grounded in who you are.</p>
-                        </div>
-                        <p style="margin-top: 2rem; font-style: italic; color: var(--sage-accent);">Each session meets you where you are — no pressure, no fixing, just powerful awareness and growth.</p>
+                        <h3>1:1 Confidence Coaching</h3>
+                        <p>Personalised coaching sessions designed to help you quiet self-doubt, build emotional self-trust, and make decisions with clarity. Feel grounded in who you are.</p>
+                        <p class="accent-text">Each session meets you where you are — no pressure, no fixing, just powerful awareness and growth.</p>
                     </div>
                     <div class="card reveal">
-                        <div>
-                            <h3>Guided Practices & Tools</h3>
-                            <p>Simple tools you can use daily to regulate your mind, build inner safety, and strengthen confidence over time.</p>
-                        </div>
-                        <p style="margin-top: 2rem; font-style: italic; color: var(--sage-accent);">This isn’t about becoming confident. It’s about remembering that you already are.</p>
+                        <h3>Guided Practices & Tools</h3>
+                        <p>Simple tools you can use daily to regulate your mind, build inner safety, and strengthen confidence over time.</p>
+                        <p class="accent-text">This isn’t about becoming confident. It’s about remembering that you already are.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- WHAT CHANGES -->
-        <section class="list-section">
+        <section class="bg-alternate">
             <div class="container">
-                <h2 class="section-title reveal">What Changes When You Trust Yourself</h2>
+                <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">What Changes When You Trust Yourself</h2>
                 <ul class="check-list reveal">
                     <li>Less mental noise</li>
                     <li>Clearer decisions</li>
@@ -512,9 +493,9 @@
         </section>
 
         <!-- TESTIMONIALS -->
-        <section id="testimonials">
+        <section id="testimonials" class="bg-white">
             <div class="container">
-                <h2 class="section-title reveal">What Clients Are Saying</h2>
+                <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">What Clients Are Saying</h2>
                 <div class="testimonial-grid">
                     <div class="testimonial-card reveal">
                         <blockquote>“I finally feel like myself again. Maya helped me stop spiralling in my thoughts and start trusting my voice. I feel calmer, clearer, and more confident in every area of my life.”</blockquote>
@@ -524,33 +505,17 @@
                         <blockquote>“This coaching changed how I show up. I used to doubt everything I said and did. Now I feel grounded and confident without trying to be someone else.”</blockquote>
                         <p class="testimonial-author">— Olivia M., Melbourne</p>
                     </div>
-                    <div class="testimonial-card reveal">
-                        <blockquote>“Confidence without pressure. Working with Maya felt safe and supportive. My self-trust has grown in ways I didn’t think were possible.”</blockquote>
-                        <p class="testimonial-author">— Emily K., Brisbane</p>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- FINAL BOOKING -->
-        <section id="contact">
+        <section id="contact" class="bg-white">
             <div class="container">
                 <div class="cta-box reveal">
                     <h2>Ready to Feel Calm, Clear, and Confident?</h2>
                     <p style="margin: 2rem 0; font-size: 1.2rem;">If you’re tired of overthinking and ready to trust yourself again, let’s talk.</p>
                     <a href="#" class="btn">Book Your Free Clarity Call</a>
-                    <span class="microcopy">No pressure. Just a conversation.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- RE-ALIGNED CALLOUT -->
-        <section style="background-color: var(--white); padding-bottom: 140px;">
-            <div class="container" style="text-align: center;">
-                <div class="reveal">
-                    <h2>You Don’t Need to Push Harder — You Need to Feel Aligned</h2>
-                    <p style="margin: 1.5rem 0; font-size: 1.2rem;">Confidence grows when you stop fighting yourself.</p>
-                    <a href="#contact" style="color: var(--sage-accent); font-family: var(--font-serif); font-size: 1.6rem; border-bottom: 2px solid var(--sage-accent);">Let’s start there.</a>
                 </div>
             </div>
         </section>
@@ -569,10 +534,8 @@
     </footer>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Header Background on Scroll
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 60) {
@@ -582,7 +545,6 @@
             }
         });
 
-        // Reveal on Scroll Logic
         const reveals = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             const triggerBottom = window.innerHeight * 0.85;
@@ -595,23 +557,7 @@
         };
 
         window.addEventListener('scroll', revealOnScroll);
-        // Fire once on load to show top elements
         revealOnScroll();
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
     </script>
 </body>
 </html>
