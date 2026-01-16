@@ -6,6 +6,9 @@
     <title>Maya Whitely Coaching | Confidence & Clarity for Sensitive Women</title>
     <meta name="description" content="Confidence coaching for sensitive, ambitious women in Australia. Move through life with calm confidence.">
     
+    <!-- Favicon / Browser Tab Icon -->
+    <link rel="icon" type="image/png" href="mayalogo.png">
+    
     <!-- Google Fonts: Playfair Display for Serifs, Inter for UI/Body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -360,6 +363,59 @@
             transform: scale(1.01);
         }
 
+        /* FAQ Section */
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: color 0.3s var(--ease);
+        }
+
+        .faq-question:hover {
+            color: var(--sage-accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s var(--ease), padding 0.4s var(--ease);
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-icon {
+            transition: transform 0.4s var(--ease);
+            color: var(--sage-accent);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
         /* Booking Section */
         .cta-box {
             text-align: center;
@@ -420,6 +476,7 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#approach">Approach</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#testimonials">Kind Words</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -462,9 +519,9 @@
             <div class="container">
                 <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">This Coaching Is for You If…</h2>
                 <ul class="check-list reveal">
-                    <li>You’re ambitious but constantly second-guess yourself</li>
+                    <li>You’re navigating a transition — career changes, identity shifts, or life realignment</li>
+                    <li>You feel disconnected from who you truly are</li>
                     <li>You overthink conversations, decisions, and next steps</li>
-                    <li>You’re sensitive, intuitive, and emotionally aware</li>
                     <li>You want <span class="text-highlight-green">confidence</span> that feels calm — not aggressive</li>
                     <li>You’re ready to trust yourself and speak from alignment</li>
                 </ul>
@@ -493,18 +550,66 @@
             </div>
         </section>
 
-        <!-- WHAT CHANGES -->
-        <section class="bg-alternate">
+        <!-- FAQ SECTION -->
+        <section id="faq" class="bg-alternate">
             <div class="container">
-                <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">What Changes When You Trust Yourself</h2>
-                <ul class="check-list reveal">
-                    <li>Less mental noise</li>
-                    <li>Clearer decisions</li>
-                    <li>Stronger boundaries</li>
-                    <li>Calm self-belief</li>
-                    <li><span class="text-highlight-green">Confidence</span> that feels natural, not forced</li>
-                    <li>Alignment between who you are and how you live</li>
-                </ul>
+                <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">FAQs — Maya</h2>
+                <div class="faq-grid">
+                    <div class="faq-item reveal">
+                        <button class="faq-question">
+                            Who is this coaching best suited for?
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Women navigating a transition — career changes, identity shifts, faith questions, or life realignment — who feel disconnected from who they truly are.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question">
+                            I feel lost, but I can’t explain why. Is this for me?
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. Many clients come feeling “off” without clear answers. The work helps you reconnect with your inner truth and sense of self.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question">
+                            Do I need to know what I want before starting?
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No. Clarity comes through the process, not before it.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question">
+                            Is this spiritual, practical, or both?
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>It’s grounded and reflective, with space for inner work and practical integration — always aligned with your personal values.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question">
+                            What makes this different from life coaching?
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>This work focuses on identity, alignment, and embodiment — not just goal-setting or productivity.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <button class="faq-question">
+                            How long does the process take?
+                            <i data-lucide="chevron-down" class="faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Some shifts happen quickly, while deeper alignment unfolds over time. Many clients feel more grounded and clear within the first month.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -539,11 +644,11 @@
 
     <footer>
         <div class="container">
-            <span class="footer-logo">Maya Whitely Coaching</span>
-            <p>Confidence for sensitive, ambitious women.</p>
-            <div class="social-icons">
-                <a href="#"><i data-lucide="instagram"></i></a>
-                <a href="#"><i data-lucide="linkedin"></i></a>
+            <span class="footer-logo" style="font-family: var(--font-serif); font-size: 1.5rem;">Maya Whitely Coaching</span>
+            <p>Identity & Alignment Coach for Women in Transition.</p>
+            <div class="social-icons" style="margin: 1.5rem 0;">
+                <a href="#" style="margin: 0 10px;"><i data-lucide="instagram"></i></a>
+                <a href="#" style="margin: 0 10px;"><i data-lucide="linkedin"></i></a>
             </div>
             <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 2rem;">&copy; 2024 Maya Whitely Coaching. Australia.</p>
         </div>
@@ -551,6 +656,20 @@
 
     <script>
         lucide.createIcons();
+
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                
+                // Close other open items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) item.classList.remove('active');
+                });
+                
+                faqItem.classList.toggle('active');
+            });
+        });
 
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
