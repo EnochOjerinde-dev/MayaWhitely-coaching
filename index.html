@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maya Whitely Coaching | Confidence & Clarity for Sensitive Women</title>
+    <meta name="description" content="Confidence coaching for sensitive, ambitious women in Australia. Move through life with calm confidence.">
+    
+    <!-- Google Fonts: Playfair Display for Serifs, Inter for UI/Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* Color Palette */
+            --bg-warm: #F9F7F2;      
+            --sage-accent: #8E9775;  
+            --sage-hover: #7A8463;
+            --text-main: #4A4A4A;    
+            --text-light: #717171;
+            --white: #FFFFFF;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            
+            /* Typography */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            
+            /* Transitions */
+            --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            line-height: 1.25;
+            color: #2C2C2C;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s var(--ease);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Helpers */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 120px 0; /* Consistent breathing room */
+            position: relative;
+            clear: both;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1.1rem 2.5rem;
+            background-color: var(--sage-accent);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: all 0.4s var(--ease);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--sage-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(142, 151, 117, 0.2);
+        }
+
+        /* Header & Nav */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s var(--ease);
+            padding: 1.5rem 0;
+        }
+
+        header.scrolled {
+            background: rgba(249, 247, 242, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #2C2C2C;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .nav-links a:hover {
+            color: var(--sage-accent);
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh; /* Changed from height to min-height to prevent collapse */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 140px; /* Space for fixed header */
+            padding-bottom: 80px;
+            background: linear-gradient(rgba(249, 247, 242, 0.75), rgba(249, 247, 242, 0.75)), 
+                        url('MayaWhitelyCoaching-bg.jpg') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .supporting-line {
+            display: block;
+            margin-top: 1.5rem;
+            font-style: italic;
+            font-family: var(--font-serif);
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* About Section - Meet Maya */
+        #about {
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .coach-img-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 20px 20px 0px var(--bg-warm);
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .punchline {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--sage-accent);
+            margin-top: 2rem;
+            display: block;
+            line-height: 1.4;
+        }
+
+        /* List Sections */
+        .list-section {
+            background-color: var(--bg-warm);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+        }
+
+        .check-list {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .check-list li {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.15rem;
+        }
+
+        .check-list li::before {
+            content: "—";
+            margin-right: 1.5rem;
+            color: var(--sage-accent);
+            font-weight: bold;
+        }
+
+        /* Cards Grid */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 3.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        /* Testimonials */
+        #testimonials {
+            background-color: #F0F2ED;
+        }
+
+        .testimonial-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .testimonial-card blockquote {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 500;
+            color: var(--sage-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        /* Booking Section */
+        .cta-box {
+            text-align: center;
+            padding: 80px 40px;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .microcopy {
+            display: block;
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer */
+        footer {
+            background: #2C2C2C;
+            color: #E0E0E0;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .social-icons a:hover {
+            color: var(--sage-accent);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+            .coach-img-wrapper {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .check-list li {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .about-text h2, .section-title {
+                font-size: 2.2rem;
+            }
+            .card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Maya Whitely</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#approach">Approach</a></li>
+                    <li><a href="#testimonials">Kind Words</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content reveal">
+                    <h1>Quiet the Self-Doubt. Trust Your Voice. Move Through Life with Calm Confidence.</h1>
+                    <p>Confidence coaching for sensitive, ambitious women who are tired of overthinking and ready to feel clear, grounded, and aligned with who they truly are.</p>
+                    <a href="#contact" class="btn">Book a Free Clarity Call</a>
+                    <span class="supporting-line">For women who feel deeply — and want to lead their lives with confidence, not noise.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="coach-img-wrapper reveal">
+                        <img src="MayaWhitely.jpg" alt="Maya Whitely" class="coach-img">
+                    </div>
+                    <div class="about-text reveal">
+                        <h2>Meet Maya Whitely</h2>
+                        <p>Hi, I’m Maya — a confidence coach for women who are ambitious, thoughtful, and often stuck in their own heads.</p>
+                        <p>I work with women who look capable on the outside but feel unsure on the inside. Women who overthink every decision, second-guess their voice, and quietly wonder if they’re “too much” or “not enough” at the same time.</p>
+                        <p>My work is about helping you slow the mental noise, reconnect with your inner confidence, and move forward with clarity — without forcing yourself to become someone you’re not.</p>
+                        <span class="punchline">You don’t need to be louder. You need to feel safer being yourself.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO THIS IS FOR -->
+        <section class="list-section">
+            <div class="container">
+                <h2 class="section-title reveal">This Coaching Is for You If…</h2>
+                <ul class="check-list reveal">
+                    <li>You’re ambitious but constantly second-guess yourself</li>
+                    <li>You overthink conversations, decisions, and next steps</li>
+                    <li>You’re sensitive, intuitive, and emotionally aware</li>
+                    <li>You want confidence that feels calm — not aggressive</li>
+                    <li>You’re ready to trust yourself and speak from alignment</li>
+                </ul>
+                <div style="text-align: center; margin-top: 4rem;" class="reveal">
+                    <p class="punchline">Confidence doesn’t have to feel heavy. It can feel steady.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW WE WORK TOGETHER -->
+        <section id="approach" style="background-color: var(--white);">
+            <div class="container">
+                <h2 class="section-title reveal">How We Work Together</h2>
+                <div class="grid-cards">
+                    <div class="card reveal">
+                        <div>
+                            <h3>1:1 Confidence Coaching</h3>
+                            <p>Personalised coaching sessions designed to help you quiet self-doubt, build emotional self-trust, and make decisions with clarity. Feel grounded in who you are.</p>
+                        </div>
+                        <p style="margin-top: 2rem; font-style: italic; color: var(--sage-accent);">Each session meets you where you are — no pressure, no fixing, just powerful awareness and growth.</p>
+                    </div>
+                    <div class="card reveal">
+                        <div>
+                            <h3>Guided Practices & Tools</h3>
+                            <p>Simple tools you can use daily to regulate your mind, build inner safety, and strengthen confidence over time.</p>
+                        </div>
+                        <p style="margin-top: 2rem; font-style: italic; color: var(--sage-accent);">This isn’t about becoming confident. It’s about remembering that you already are.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT CHANGES -->
+        <section class="list-section">
+            <div class="container">
+                <h2 class="section-title reveal">What Changes When You Trust Yourself</h2>
+                <ul class="check-list reveal">
+                    <li>Less mental noise</li>
+                    <li>Clearer decisions</li>
+                    <li>Stronger boundaries</li>
+                    <li>Calm self-belief</li>
+                    <li>Confidence that feels natural, not forced</li>
+                    <li>Alignment between who you are and how you live</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="testimonials">
+            <div class="container">
+                <h2 class="section-title reveal">What Clients Are Saying</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card reveal">
+                        <blockquote>“I finally feel like myself again. Maya helped me stop spiralling in my thoughts and start trusting my voice. I feel calmer, clearer, and more confident in every area of my life.”</blockquote>
+                        <p class="testimonial-author">— Hannah R., Sydney</p>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <blockquote>“This coaching changed how I show up. I used to doubt everything I said and did. Now I feel grounded and confident without trying to be someone else.”</blockquote>
+                        <p class="testimonial-author">— Olivia M., Melbourne</p>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <blockquote>“Confidence without pressure. Working with Maya felt safe and supportive. My self-trust has grown in ways I didn’t think were possible.”</blockquote>
+                        <p class="testimonial-author">— Emily K., Brisbane</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL BOOKING -->
+        <section id="contact">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <h2>Ready to Feel Calm, Clear, and Confident?</h2>
+                    <p style="margin: 2rem 0; font-size: 1.2rem;">If you’re tired of overthinking and ready to trust yourself again, let’s talk.</p>
+                    <a href="#" class="btn">Book Your Free Clarity Call</a>
+                    <span class="microcopy">No pressure. Just a conversation.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RE-ALIGNED CALLOUT -->
+        <section style="background-color: var(--white); padding-bottom: 140px;">
+            <div class="container" style="text-align: center;">
+                <div class="reveal">
+                    <h2>You Don’t Need to Push Harder — You Need to Feel Aligned</h2>
+                    <p style="margin: 1.5rem 0; font-size: 1.2rem;">Confidence grows when you stop fighting yourself.</p>
+                    <a href="#contact" style="color: var(--sage-accent); font-family: var(--font-serif); font-size: 1.6rem; border-bottom: 2px solid var(--sage-accent);">Let’s start there.</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <span class="footer-logo">Maya Whitely Coaching</span>
+            <p>Confidence for sensitive, ambitious women.</p>
+            <div class="social-icons">
+                <a href="#"><i data-lucide="instagram"></i></a>
+                <a href="#"><i data-lucide="linkedin"></i></a>
+            </div>
+            <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 2rem;">&copy; 2024 Maya Whitely Coaching. Australia.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Header Background on Scroll
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal on Scroll Logic
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const triggerBottom = window.innerHeight * 0.85;
+            reveals.forEach(el => {
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < triggerBottom) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Fire once on load to show top elements
+        revealOnScroll();
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
