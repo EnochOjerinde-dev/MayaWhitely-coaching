@@ -26,6 +26,11 @@
             --text-light: #717171;
             --white: #FFFFFF;
             --cream-light: #F1F1EB;
+            
+            /* Specific Highlights */
+            --highlight-brown: #5D4037;
+            --highlight-green: #4A5D23;
+
             --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
             --card-shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.1);
             
@@ -63,6 +68,17 @@
             line-height: 1.25;
             color: var(--text-dark);
             transition: color 0.4s var(--ease);
+        }
+
+        /* Highlight Classes */
+        .text-highlight-brown {
+            color: var(--highlight-brown);
+            font-weight: 600;
+        }
+
+        .text-highlight-green {
+            color: var(--highlight-green);
+            font-weight: 600;
         }
 
         a {
@@ -416,7 +432,7 @@
         <section id="hero">
             <div class="container">
                 <div class="hero-content reveal">
-                    <h1>Quiet the Self-Doubt. Trust Your Voice. Move Through Life with Calm Confidence.</h1>
+                    <h1>Quiet the <span class="text-highlight-brown">Self-Doubt</span>. Trust Your Voice. Move Through Life with <span class="text-highlight-green">Calm Confidence</span>.</h1>
                     <p>Confidence coaching for sensitive, ambitious women who are tired of overthinking and ready to feel clear, grounded, and aligned with who they truly are.</p>
                     <a href="#contact" class="btn">Book a Free Clarity Call</a>
                 </div>
@@ -449,7 +465,7 @@
                     <li>You’re ambitious but constantly second-guess yourself</li>
                     <li>You overthink conversations, decisions, and next steps</li>
                     <li>You’re sensitive, intuitive, and emotionally aware</li>
-                    <li>You want confidence that feels calm — not aggressive</li>
+                    <li>You want <span class="text-highlight-green">confidence</span> that feels calm — not aggressive</li>
                     <li>You’re ready to trust yourself and speak from alignment</li>
                 </ul>
                 <div style="text-align: center; margin-top: 4rem;" class="reveal">
@@ -458,19 +474,19 @@
             </div>
         </section>
 
-        <!-- HOW WE WORK TOGETHER (INVERT EFFECT HERE) -->
+        <!-- HOW WE WORK TOGETHER -->
         <section id="approach" class="bg-white">
             <div class="container">
                 <h2 class="section-title reveal" style="text-align: center; margin-bottom: 4rem;">How We Work Together</h2>
                 <div class="grid-cards">
                     <div class="card reveal">
                         <h3>1:1 Confidence Coaching</h3>
-                        <p>Personalised coaching sessions designed to help you quiet self-doubt, build emotional self-trust, and make decisions with clarity. Feel grounded in who you are.</p>
+                        <p>Personalised coaching sessions designed to help you quiet <span class="text-highlight-brown">self-doubt</span>, build emotional self-trust, and make decisions with clarity. Feel grounded in who you are.</p>
                         <p class="accent-text">Each session meets you where you are — no pressure, no fixing, just powerful awareness and growth.</p>
                     </div>
                     <div class="card reveal">
                         <h3>Guided Practices & Tools</h3>
-                        <p>Simple tools you can use daily to regulate your mind, build inner safety, and strengthen confidence over time.</p>
+                        <p>Simple tools you can use daily to regulate your mind, build inner safety, and strengthen <span class="text-highlight-green">confidence</span> over time.</p>
                         <p class="accent-text">This isn’t about becoming confident. It’s about remembering that you already are.</p>
                     </div>
                 </div>
@@ -486,7 +502,7 @@
                     <li>Clearer decisions</li>
                     <li>Stronger boundaries</li>
                     <li>Calm self-belief</li>
-                    <li>Confidence that feels natural, not forced</li>
+                    <li><span class="text-highlight-green">Confidence</span> that feels natural, not forced</li>
                     <li>Alignment between who you are and how you live</li>
                 </ul>
             </div>
@@ -513,8 +529,8 @@
         <section id="contact" class="bg-white">
             <div class="container">
                 <div class="cta-box reveal">
-                    <h2>Ready to Feel Calm, Clear, and Confident?</h2>
-                    <p style="margin: 2rem 0; font-size: 1.2rem;">If you’re tired of overthinking and ready to trust yourself again, let’s talk.</p>
+                    <h2>Ready to Feel Calm, Clear, and <span class="text-highlight-green">Confident</span>?</h2>
+                    <p style="margin: 2rem 0; font-size: 1.2rem;">If you’re tired of <span class="text-highlight-brown">overthinking</span> and ready to trust yourself again, let’s talk.</p>
                     <a href="#" class="btn">Book Your Free Clarity Call</a>
                 </div>
             </div>
